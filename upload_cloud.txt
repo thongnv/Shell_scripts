@@ -1,0 +1,48 @@
+============  C O P Y    F D K ================================
+
+scp -i Settings/ms-ufo.pem Sources/FDK/Tools.zip 10.16.2.46:/home/ec2-user/Source/
+scp -i Settings/ms-ufo.pem restart-servers.sh 10.16.2.46:/home/ec2-user/Source/motools/
+
+
+==============  M A K E   O T F  ==================================
+cd ~/Source/FDK/Tools/Programs/makeotf/makeotf_lib/lib
+rm -r *
+cd ../../build/linux/gcc/debug
+rm *.o
+cd ../release/
+rm *.o
+cd ..
+chmod +x BuildAll.sh
+./BuildAll.sh
+
+ll ~/Source/FDK/Tools/Programs/makeotf/exe/linux/release/
+cp ~/Source/FDK/Tools/Programs/makeotf/exe/linux/release/makeotfexe ~/Source/motools/utils/FDK/
+ll ~/Source/motools/utils/FDK/
+
+cd ~/Source/
+./restart-servers.sh
+
+
+============  E D I T  C O D E  ===============================
+
+vim motools/compilersExt/cffUtils.py
+vim motools/subr/subr.py
+
+==============  C L O U D  ==================================
+cd ~/Source/FDK/Tools/Programs/makeotf/makeotf_lib/lib
+rm -r *
+cd ../../build/linux/gcc/debug
+rm *.o
+cd ../release/
+rm *.o
+cd ..
+chmod +x BuildAll.sh
+./BuildAll.sh
+
+ll ~/Sources/FDK/Tools/Programs/makeotf/exe/linux/release/
+cp ~/Sources/FDK/Tools/Programs/makeotf/exe/linux/release/makeotfexe ~/Source/motools/utils/FDK/
+ll ~/Sources/motools/utils/FDK/
+
+cd ~/Source/
+./restart-servers.sh
+
